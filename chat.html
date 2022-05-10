@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head lang="en">
+    <title>pipeChat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="The in-browser version of pipeChat">
+    <meta name="keywords" content="pipeChat, messaging, chat, piping server, use, use pipeChat">
+    <link rel="icon" href="images/icon.png" type="image/icon type">
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  </head>
+
+  <body>
+    <header>
+      <nav id="nav_menu">
+        <img src="images/logo.png" alt="pipeChat Logo" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">FAQ</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="chat.html" class="current">pipeChat</a>
+            <ul>
+              <li><a href="alternative.html">pipeChat via Custom Server</a></li>
+              <li><a href="mobile.html">Mobile App</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <p>
+        <input placeholder="Your ID" id="your_id">
+        <input placeholder="Other ID" id="other_id">
+        <button type="connect" onclick='receiveLoop(this)'>Connect!</button>
+      </p>
+      <hr>
+    </header>
+    <footer class="chat-footer">
+      <p>
+        <input class="message-input" placeholder="Message" id="message" size="50" onkeypress="handleKeyPress(event)">
+      </p>
+      <p>
+        <button type="send" onclick="send()">Send</button>
+      </p>
+    </footer>
+    <main>
+      <div id="talks">
+        <!--Area for the messages to be added-->
+      </div>
+    </main>
+    <script>
+      //Recieving a message (a loop that activates when a message is detected)
+      async function receiveLoop(btn) {
+        your_id.disabled = other_id.disabled = btn.disabled = true;
+        while (true) {
+          try {
+            //Connect via PPNG to the other user and wait for a message
+            const res = await fetch(`https://ppng.io/${other_id.value}_${your_id.value}`);
+            //Create a div for the recieved message
+            const talk = document.createElement("div");
+            //Create a p tag in the div
+            const text = document.createElement("p");
+            //Set p text to the recieved message
+            text.innerText = await res.text();
+            //Add div to recieved class
+            talk.classList.add("recieved");
+            //Add the p tag to the div
+            talk.appendChild(text);
+            //Add the div to the talks ID in html
+            talks.appendChild(talk);
+          } catch (err) {
+            console.error(err);
+          }
+        }
+      }
+
+
+      // Send your message
+      function send() {
+        if (your_id.value != "" && other_id.value != "" && message.value != "") {
+          //Fetch PPNG link and send the message through it
+          fetch(`https://ppng.io/${your_id.value}_${other_id.value}`, {
+            'method': 'POST',
+            body: message.value
+          });
+          //Create a div for your message
+          const talk = document.createElement("div");
+          //Create a p tag in the div
+          const text = document.createElement("p");
+          //Set the p text to the message
+          text.innerText = message.value;
+          //Add the local class to the div
+          talk.classList.add("local");
+          //Add the p tag to the div
+          talk.appendChild(text);
+          //Add the div to the talks ID in html
+          talks.appendChild(talk);
+          //Reset message value
+          message.value = "";
+        }
+      }
+
+      //On an enter press activate the send function
+      function handleKeyPress(e) {
+        var key = e.keyCode || e.which;
+        if (key == 13) {
+          send();
+        }
+      }
+    </script>
+  </body>
+<html>

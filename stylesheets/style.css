@@ -1,0 +1,306 @@
+/* Nav menu styling */
+#nav_menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 3vh;
+}
+#nav_menu ul li {
+    float: left; 
+}
+#nav_menu ul li a {
+    display: block;
+    width: 18vw; 
+    text-align: center; 
+    margin: 0 1vw;
+    padding: 1vw 0; 
+    text-decoration: none; 
+    background-color: #303349;
+    color: #AF8FAF;
+    font-weight: bold; 
+}
+#nav_menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+}
+#nav_menu ul ul li { 
+    float: none;
+}
+#nav_menu ul li:hover > ul {
+    display: block;
+}
+#nav_menu > ul::after {
+    content: "";
+    clear: both;
+    display: block;
+}
+#nav_menu .current {
+    color: #0097DD; 
+}
+
+/* Recieved and sent messages styling */
+#talks {
+    margin: 0 0 15vh 0;
+}
+.local {
+    display: block;
+    width: fit-content; 
+    max-width: 90vw;
+    height: fit-content;
+    padding: 0vh 1vw 0vh 1vw; 
+    margin: 2.5vh .5vw 2.5vh auto; 
+    font-size: 4.5vh;
+    background-color: #AF8FAF;
+    color: #000000;
+    border-radius: 30px 4px 30px 30px;
+    overflow-wrap: break-word;
+    
+}
+.local p {
+    padding: 1vh 0vw;
+    margin: 1vh 0;
+    
+}
+.recieved {
+    display: block;
+    width: fit-content; 
+    max-width: 90vw;
+    height: fit-content;
+    padding: 0vh 1vw 0vh 1vw; 
+    margin: 2.5vh auto 2.5vh .5vw; 
+    font-size: 4.5vh;
+    background-color: #AF8FAF;
+    color: #000000;
+    border-radius: 4px 30px 30px 30px;
+    overflow-wrap: break-word;
+}
+.recieved p {
+    padding: 1vh 0vw;
+    margin: 1vh 0;
+    
+}
+/* Sending message textbox style */
+.message-input {
+    height: fit-content;
+    width: 67vw;
+    font-size: 3vh;
+    padding: 3vh 1.2vw;
+    margin: 11vh 1vw 1vh 1vw;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    border-radius: 8px;
+    background-color: #303349;
+    outline: none;
+    border: none;
+    color: #AF8FAF;
+}
+/* Moving background for homepage */ 
+.index-home {
+    background-image: url("../images/background.gif");
+    min-height: 600px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+} 
+.index-home img {
+    width: 30vw;
+    display: block;
+    margin: auto;
+    padding-top: 5vh;
+}
+.index-home h3 {
+    text-align: center;
+    bottom: 5vh;
+    font-size: 115%;
+} 
+.index-home br {
+    margin: 15vh;
+}
+.index-main {
+    background-color: #1E1B33;
+    height: fit-content;
+}
+
+/* General styling */
+body {
+    background-color: #1E1B33;
+    font-family: rockwell, times, helvetica, sans-serif;
+    color: #AF8FAF;
+}
+a {
+    color: #005882;
+    text-decoration: none;
+}
+a:hover, section a:focus {
+    color: #0097DD;
+    text-decoration: none;
+}
+header {
+    background-color: #1E1B33; 
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+header img {
+    display: block;
+    float: left;
+    width: 15vw;
+    position: -webkit-sticky;
+    position: sticky;
+}
+
+header input {
+    width: 23vw; 
+    height: 5vh;
+    margin: auto;
+    padding: 0 1vw;
+    background-color: #303349;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+}
+
+/* Open Buttons */
+.download {
+    width: fit-content; 
+    height: 5vh;
+    font-size: 4vh;
+    text-align: center;
+    padding: .5vh 1vw .5vh 0;
+    margin: 3vh 1vw 3vh 1vw;
+    border-radius: 8px;
+    background-color: #AF8FAF;
+    border: none;
+    color: #303349;
+}
+.download img {
+    display: block;
+    float: left;
+    margin: .5vh .5vw;
+    height: 4vh;
+}
+.open {
+    width: fit-content; 
+    height: 5vh;
+    font-size: 4vh;
+    text-align: center;
+    padding: .5vh 0vw .5vh 1vw;
+    margin: 5vh 2vw 5vh 2vw;
+    border-radius: 8px;
+    background-color: #AF8FAF;
+    border: none;
+    color: #303349;
+}
+.open img {
+    display: block;
+    float: right;
+    margin: .5vh .5vw;
+    height: 4vh;
+}
+
+
+/* Footer styles (one for info pages, one for chatting pages, one for the mobile page because it was weird) */
+.standard-footer {
+    text-align: right;
+    font-size: smaller;
+    margin: 1vh 1vw;
+    position: relative;
+    bottom: 0vh;
+}
+.mobile-page-footer a img {
+    position: relative;
+    width: 25vw;
+    height: 10vw;
+    float: left;
+    left: 0;
+    bottom: 0;
+}
+.mobile-page-footer br {
+    margin: 5vw 0 0 0;
+}
+.mobile-page-footer {
+    display: block;
+    width: 96vw;
+    position: relative;
+    text-align: right;
+    font-size: smaller;
+    margin: 5vh 1vw 0 0;
+    bottom: 0vh;
+}
+.chat-footer {
+    bottom: 0;
+    background-color: #303349;
+}
+
+hr {
+    border-color: #72007F;
+}
+
+/* Styles for the buttons */
+button[type='send'] {
+    width: 27vw; 
+    height: 9.5vh;
+    border-radius: 12px;
+    margin: 11vh 1vw 1vh 1vw; 
+    right: 0; 
+    bottom: 0;
+    position: fixed;
+    background-color: #303349;
+    border: none;
+    color: #BF00D8;
+    font-size: 5vh;
+}
+
+button[type='connect'] {
+    width: 20vw; 
+    height: 5vh;
+    border-radius: 8px;
+    margin: auto;
+    background-color: #303349;
+    border: none;
+    color: #BF00D8;
+}
+
+/* Mobile app styles */ 
+button[type='send-mobile'] {
+    width: 27vw; 
+    height: 10vh;
+    border-radius: 12px;
+    margin: 11vh 1vw 5vh 1vw; 
+    right: 0; 
+    bottom: 0;
+    position: fixed;
+    background-color: #303349;
+    border: none;
+    color: #BF00D8;
+    font-size: 5vh;
+}
+.app_footer {
+    bottom: -1vh;
+    font-size: 2.5vh;
+    position: fixed;
+}
+.message-input-mobile {
+    height: 10vh;
+    width: 70vw;
+    font-size:3vh;
+    margin: 11vh .5vw 5vh .5vw;
+    left: 0;
+    bottom: 0;
+    position: fixed;
+    border-radius: 8px;
+    background-color: #303349;
+    outline: none;
+    border: none;
+    color: #AF8FAF;
+}
+.mobile_logo {
+    width: 30vw;
+    float: none;
+    position: -webkit-sticky;
+    position: sticky;
+}
